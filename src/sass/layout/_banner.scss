@@ -1,0 +1,144 @@
+.banner {
+  width: 100%;
+  &__content {
+    background: rgb(251, 251, 248);
+    margin: 0 15%;
+    display: flex;
+    &__down {
+      width: 70%;
+      &--info {
+        width: 100%;
+        padding: 5% 2.5%;
+        .nguoiTao {
+          margin: 15px 0;
+          border-bottom: 1px solid #989586;
+          padding-bottom: 7px;
+          display: flex;
+          &__left {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            &__img {
+              width: 50%;
+              img {
+                width: 100%;
+                height: 60px;
+              }
+            }
+            &__hoTen {
+              width: 49%;
+              margin-left: 1%;
+              p {
+                @include Text(
+                  fs("subtitle2"),
+                  textcl("primary"),
+                  fw("fwmedium")
+                );
+                margin-bottom: 0;
+              }
+              span {
+                @include Text(
+                  fs("subtitle1"),
+                  textcl("primary"),
+                  fw("fwmedium")
+                );
+              }
+            }
+          }
+          &__midle {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            &__img {
+              i {
+                font-size: 50px;
+                color: red;
+              }
+            }
+            &__hoTen {
+              width: 49%;
+              margin-left: 1%;
+              p {
+                @include Text(
+                  fs("subtitle2"),
+                  textcl("primary"),
+                  fw("fwmedium")
+                );
+                margin-bottom: 0;
+              }
+              span {
+                @include Text(
+                  fs("subtitle1"),
+                  textcl("primary"),
+                  fw("fwmedium")
+                );
+              }
+            }
+          }
+          &__right {
+            // display: flex;
+            align-items: center;
+
+            &__start {
+              i {
+                color: #ffe799;
+              }
+            }
+          }
+        }
+        .camNhan {
+          border: 1px solid #989586;
+          margin-top: 7px;
+          &__content {
+            padding: 0 5px;
+            display: flex;
+            &__right {
+              margin-left: 10px;
+            }
+          }
+        }
+
+        h2 {
+          @include Text(fs("h41"), textcl("primary"), fw("fwmedium"));
+        }
+        span {
+          @include Text(fs("h6"), textcl("primary"), fw("fwregular"));
+        }
+        p {
+          @include Text(fs("h6"), textcl("primary"), fw("fwregular"));
+        }
+
+        button {
+          color: textcl("primary");
+          margin-right: 30px;
+          margin-top: 10px;
+          &:hover {
+            color: bg("black");
+          }
+        }
+      }
+    }
+    &__up {
+      width: 30%;
+      &--item {
+        z-index: 10;
+        width: 90%;
+        height: 395px;
+        border: 1px solid bg("light");
+        margin: 0 auto;
+        margin-top: 10%;
+        background: bg("light");
+        box-shadow: 0 5px 10px bg("black");
+      }
+      &--sign {
+        padding: 10px;
+        button {
+          width: 100%;
+        }
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@function bg($color){
+    @if (map-has-key($map: $background, $key:$color )) {
+        @return map-get($map: $background, $key:$color );
+        
+    }
+    @warn 'sai color';
+}
+@function textcl($tcolor){
+    @if (map-has-key($map:$textcolor , $key: $tcolor)) {
+        @return map-get($map: $textcolor, $key:$tcolor );
+        
+    }
+    @warn 'sai color';
+}
+@function fs($font){
+    @if  map-has-key($map: $fontsize, $key:$font ) {
+        @return map-get($map: $fontsize, $key:$font );
+        
+    }
+    @warn 'sai color';
+}
+@function fw($fontw){
+    @if map-has-key($map: $fontweights, $key:$fontw ){
+        @return map-get($map: $fontweights, $key:$fontw );
+    }
+    @warn 'sai color';
+}
+@function spacing($x, $y:null){
+    @if ($y==null)  {
+       @return $x * $spacing;
+        
+    }
+    @return $x * $spacing $y * $spacing;
+}

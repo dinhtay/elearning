@@ -1,0 +1,65 @@
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 120px;
+  .swiper-pagination-bullet {
+    background-color: bg("orange2");
+    @include size(15px, 15px);
+    margin-left: spacing(1);
+    border: 1px solid text("white");
+  }
+}
+
+.film__section--list {
+  .sapchieu {
+    display: none;
+  }
+  .owl-nav {
+    .owl-prev,
+    .owl-next {
+      position: absolute;
+      top: 45%;
+      font-size: fs("h3");
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      @include size(50px, 100px);
+      z-index: 2;
+      opacity: 0.5;
+      outline: none;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      span {
+        font-size: fs("h0");
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+      }
+      &:hover {
+        background-color: transparent;
+        color: text("primary");
+      }
+    }
+    .owl-prev {
+      height: 50px;
+      left: -70px;
+    }
+    .owl-next {
+      right: -70px;
+    }
+  }
+}
+
+.navbar-collapse {
+  background-color: rgba(bg("primary"), 0.9);
+
+  margin-top: spacing(-1);
+  .collapse--menu,
+  .collapse--login {
+    li {
+      margin-bottom: spacing(1);
+    }
+    padding: spacing(0.5, 1);
+  }
+}

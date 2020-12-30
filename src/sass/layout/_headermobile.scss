@@ -1,0 +1,15 @@
+.headerMobile {
+  &__img {
+    img {
+      width: 130px;
+    }
+  }
+
+  &__img {
+    @include MediaQuery($xs) {
+      img {
+        width: 80px;
+      }
+    }
+  }
+}

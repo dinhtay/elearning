@@ -1,0 +1,146 @@
+.listCourse {
+  background-color: bg("primary");
+
+  //.owl-carousel .owl-nav button.owl-next,
+  &__content {
+    h3 {
+      text-align: center;
+      @include Text(fs("h4"), textcl("primary"), fw("fwmedium"));
+    }
+    &__title {
+      margin-top: 10px;
+      &-tabs {
+        background: bg("secondary1");
+      }
+      ul {
+        display: flex;
+        list-style: none;
+        justify-content: space-around;
+        height: 100px;
+        margin-bottom: 0;
+        align-items: center;
+        li {
+          text-decoration: none;
+          -webkit-box-shadow: 0 10px 0 black;
+          box-shadow: 0 2px 5px black;
+          border-radius: 7px;
+          a {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    &__items {
+      margin-top: 10px;
+      .card-body {
+        padding-left: 0;
+        padding: 0.75rem 1.25rem;
+        border: none;
+        //position: relative;
+      }
+      .card-header {
+        img {
+          width: 100%;
+        }
+      }
+      .owl-carousel .owl-nav button.owl-prev {
+        border: none;
+        outline: none;
+        span {
+          display: inline-block;
+          position: absolute;
+          width: 40px;
+          height: 40px;
+          top: 25%;
+          left: 0;
+          line-height: 28px;
+          text-align: center;
+          color: textcl("primarynav");
+          border-radius: 50%;
+          border: 1px solid bg("yellow");
+          font-size: 40px;
+          background: bg("yellow");
+        }
+      }
+      .owl-carousel .owl-nav button.owl-next {
+        border: none;
+        outline: none;
+        span {
+          display: inline-block;
+          position: absolute;
+          width: 40px;
+          height: 40px;
+          color: textcl("primarynav");
+          top: 25%;
+          left: 96.5%;
+          line-height: 28px;
+          text-align: center;
+          border-radius: 50%;
+          border: 1px solid bg("yellow");
+          font-size: 40px;
+          background: bg("yellow");
+        }
+      }
+      .card-image-top {
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin-bottom: 5px;
+        border: 1px solid bg("grey");
+        border-radius: 2px;
+      }
+      .card-title {
+        @include Text(fs("subtitle1"), textcl("primary"), fw("fwbold"));
+        margin-bottom: spacing(0);
+      }
+      .card-subtitle {
+        @include Text(fs("body1"), textcl("primary"), fw("fwregular"));
+        margin: 0;
+      }
+      .card-text span:first-child,
+      .card-text i {
+        @include Text(fs("subtitle2"), textcl("yellow"), fw("fwbold"));
+      }
+      .card-text span:last-child {
+        @include Text(fs("subtitle2"), textcl("primary"), fw("fwregular"));
+      }
+      .card-text--last span:first-child {
+        @include Text(fs("subtitle1"), textcl("primary"), fw("fwbold"));
+      }
+      .card-text--last span:last-child {
+        @include Text(fs("subtitle2"), textcl("primary"), fw("fwregular"));
+        text-decoration: line-through;
+      }
+      a {
+        text-decoration: none;
+        border-radius: 5px;
+        @include Text(fs("body2"), textcl("primary"), fw("fwbold"));
+        background-color: bg("yellow");
+      }
+    }
+  }
+}
+@media screen and (max-width: 414px) {
+  .listCourse {
+    .owl-carousel .owl-nav button.owl-next {
+      border: none;
+      outline: none;
+      span {
+        display: inline-block;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        color: textcl("primarynav");
+        top: 25%;
+        left: 89%;
+        line-height: 28px;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid bg("yellow");
+        font-size: 40px;
+        background: bg("yellow");
+      }
+    }
+  }
+}

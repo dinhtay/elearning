@@ -1,0 +1,66 @@
+.carousel {
+  background-color: bg("primary");
+  margin-bottom: 10px;
+  width: 100%;
+  .background {
+    background: url(../../assets/cover.jpg);
+    height: spacing(40);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    @include MediaQuery($xs) {
+      height: 115px;
+    }
+    &__slick {
+      width: 80%;
+      img {
+        width: 30%;
+        display: inline !important;
+      }
+      .slick-track {
+        width: 0 !important;
+        height: 0 !important;
+      }
+    }
+    &__content {
+      margin-left: 20%;
+      @include MediaQuery($xs) {
+        display: none;
+      }
+      background-color: bg("primary");
+      width: 25%;
+      height: spacing(24.5);
+      padding: spacing(2);
+      h3 {
+        @include Text(fs("h2"), textcl("primary"), fw("fwmedium"));
+        letter-spacing: spacing(0.1);
+      }
+      p {
+        @include Text(fs("h6"), textcl("primary"), fw("fwregular"));
+      }
+      &__search {
+        display: flex;
+        align-items: center;
+        border: spacing(0.1) solid bg("grey");
+        border-radius: spacing(1);
+        border-radius: 21px;
+        input {
+          margin-left: 2px;
+          padding: spacing(1);
+          flex-grow: 1;
+          border: none;
+          outline: none;
+          border-radius: 23px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .carousel {
+    &__img {
+      display: none !important;
+    }
+  }
+}

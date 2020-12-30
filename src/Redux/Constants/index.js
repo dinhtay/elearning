@@ -1,0 +1,13 @@
+export const FETCH_COURSES = "FETCH_COURSES";
+export const FETCH_LIST_CATEGORY = "FETCH_LIST_CATEGORY";
+export const FETCH_DETAIL = "FETCH_DETAIL";
+export const FETCH_CATEGORY_COURSES = "FETCH_CATEGORY_COURSES";
+export const FETCH_COURSES_PAGES = "FETCH_COURSES_PAGES";
+
+export const SIGN_IN = "SIGN_IN";
+export const SIGN_UP = "SIGN_UP";
+
+export const STAR_LOADING = "STAR_LOADING";
+export const STOP_LOADING = "STOP_LOADING";
+
+export const THEM_GIO_HANG = "THEM_GIO_HANG";
