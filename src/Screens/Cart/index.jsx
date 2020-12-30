@@ -110,13 +110,13 @@ export default function DetailsCart() {
     <>
       <Header />
       <HeaderMobile />
-      <div className="detailsCart">
-        <div className="courses__title">
-          <div className="courses__title__content">
-            <h3>Giỏ Hàng</h3>
-            <span>Trang Chủ/Giỏ Hàng</span>
-          </div>
+      <div className="courses__title">
+        <div className="courses__title__content">
+          <h3>Giỏ Hàng</h3>
+          <span>Trang Chủ/Giỏ Hàng</span>
         </div>
+      </div>
+      <div className="detailsCart">
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
             <TableHead>

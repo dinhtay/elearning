@@ -17,6 +17,7 @@ import Grid from "@material-ui/core/Grid";
 import SearchCourses from "../../Components/SearchCourses";
 import Pagination from "@material-ui/lab/Pagination";
 import { THEM_GIO_HANG } from "../../Redux/Constants";
+import HeaderMobile from "../../Layouts/HeaderMobile";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,6 +104,7 @@ export default function Courses() {
   return (
     <div className="course">
       <Header></Header>
+      <HeaderMobile></HeaderMobile>
       <div className="courses__title">
         <div className="courses__title__content">
           <h3>Danh Sách Khóa Học</h3>

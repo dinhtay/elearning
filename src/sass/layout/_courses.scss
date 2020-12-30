@@ -5,7 +5,8 @@
     background: #ffe799;
     &__content {
       padding: 20px 0;
-      margin: 30px 15%;
+      margin: 0px 15%;
+      margin-bottom: 30px;
 
       h3 {
         @include Text(fs("h5"), textcl("white"), fw("fwbold"));
