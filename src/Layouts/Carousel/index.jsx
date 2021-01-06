@@ -23,7 +23,7 @@ class Carousel extends Component {
       <section className="carousel">
         <div className="background">
           <div className="background__content">
-            <h3>Tìm Khóa</h3>
+            <h3>Tìm Khóa Học</h3>
             <p>Anywhere, anytime. Start learning today!</p>
             <div className="background__content__search">
               <input type="text" placeholder="What do you want to learn" />
