@@ -1,9 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Popper from "@material-ui/core/Popper";
 import "./style.scss";
 import { Link } from "react-router-dom";
+import { ADD_CART } from "../../Redux/Constants";
+import doiTuong from "./model";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -19,17 +21,34 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Cart() {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   const countCart = useSelector((state) => state.Cart.listCart);
 
   function renderCountCart() {
-    return countCart.reduce((tong, cart, index) => {
+    return ten.reduce((tong, cart, index) => {
       return (tong = index + 1);
     }, 0);
   }
+  const cart = localStorage.getItem("Cart");
+
+  const ten = [];
+  mapData(JSON.parse(cart));
+
+  function mapData(data) {
+    for (var i = 0; i < data?.length; i++) {
+      //Đối tượng nhân viên cũ từ local : data[i]
+      // => chuyển thành đối tượng nhân viên mới : newEmpl
+      const newTask = new doiTuong(
+        data[i].hinhAnh,
+        data[i].tenKhoaHoc,
+        data[i].maKhoaHoc
+      );
+      ten.push(newTask);
+    }
+  }
 
   function renderListCart() {
-    return countCart.map((item, index) => {
+    return ten?.map((item, index) => {
       return (
         <div className="nguoiTao__cart" key={index}>
           <div className="nguoiTao__cart__content">
@@ -85,7 +104,6 @@ export default function Cart() {
       <Popper id={id} open={open} anchorEl={anchorEl}>
         <div className={classes.paper}>
           {renderListCart()}
-
           <Link
             to="/cart"
             className="btn btn-outline-warning"

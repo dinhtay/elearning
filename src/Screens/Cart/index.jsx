@@ -18,10 +18,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/swiper.scss";
 // thư viện owl carousel
+import Swal from "sweetalert2";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import { fetchCategoryCourser } from "../../Redux/Course";
 import CourseItems from "../../Components/CourseItems";
+import doiTuong from "../../Components/Cart/model";
+import { signInCourse } from "../../Redux/Cart";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -41,10 +44,6 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
@@ -57,10 +56,29 @@ export default function DetailsCart() {
   const listCategoryCourser = useSelector(
     (state) => state.Course.listCategoryCourser
   );
-  /*  const cart = localStorage.getItem("Cart");
-  listCart.push(JSON.parse(cart)); */
+  const dangKi = localStorage.getItem("SignInCourse");
+  const user1 = localStorage.getItem("userLogin");
+
+  const cart = localStorage.getItem("Cart");
+  const ten = [];
+  //const users = JSON.parse(dangKi);
+  const user = JSON.parse(user1);
+
+  mapData(JSON.parse(cart));
+  function mapData(data) {
+    for (var i = 0; i < data?.length; i++) {
+      //Đối tượng nhân viên cũ từ local : data[i]
+      // => chuyển thành đối tượng nhân viên mới : newEmpl
+      const newTask = new doiTuong(
+        data[i].hinhAnh,
+        data[i].tenKhoaHoc,
+        data[i].maKhoaHoc
+      );
+      ten.push(newTask);
+    }
+  }
   function renderCart() {
-    return listCart?.map((item, index) => {
+    return ten?.map((item, index) => {
       return (
         <StyledTableRow key={index}>
           <StyledTableCell component="th" scope="row">
@@ -78,13 +96,46 @@ export default function DetailsCart() {
               variant="contained"
               color="secondary"
               style={{ marginRight: "3px" }}
+              onClick={() =>
+                dispatch({
+                  type: "XOA_CART",
+                  payload: item,
+                })
+              }
             >
-              <i class="fa fa-trash"></i>
+              Xóa
             </Button>
-
-            <Button variant="contained" color="primary">
-              <i class="fa fa-plus-circle"></i>
-            </Button>
+            {user ? (
+              JSON.parse(dangKi) === item.maKhoaHoc &&
+              user.taiKhoan === JSON.parse(dangKi) ? (
+                <Button variant="contained" color="primary">
+                  Chờ Duyệt
+                </Button>
+              ) : (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    dispatch(signInCourse(item.maKhoaHoc));
+                  }}
+                >
+                  Đăng Kí
+                </Button>
+              )
+            ) : (
+              <Button
+                onClick={() =>
+                  Swal.fire({
+                    title: "Bạn Chưa Đăng Nhập!",
+                    icon: "warning",
+                  })
+                }
+                variant="contained"
+                color="primary"
+              >
+                Đăng Kí
+              </Button>
+            )}
           </StyledTableCell>
         </StyledTableRow>
       );
@@ -128,15 +179,13 @@ export default function DetailsCart() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {listCart.length === 0 ? (
-                <StyledTableRow>
+              {/*  <StyledTableRow>
                   <StyledTableCell align="center">
                     Chưa có khóa học
                   </StyledTableCell>
-                </StyledTableRow>
-              ) : (
-                renderCart()
-              )}
+                </StyledTableRow> */}
+
+              {renderCart()}
             </TableBody>
           </Table>
         </TableContainer>

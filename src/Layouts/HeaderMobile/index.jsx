@@ -12,9 +12,11 @@ import logo from "../../assets/logo-coral.svg";
 import { Button, Drawer, Menu } from "@material-ui/core";
 import { NavLink, Link } from "react-router-dom";
 import "../../sass/pages/mobileheader.scss";
+import Swal from "sweetalert2";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+
     display: "none",
     [theme.breakpoints.down("sm")]: {
       display: "block",
@@ -61,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: "100%",
+
     position: "absolute",
     pointerEvents: "none",
     display: "flex",
@@ -69,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
     },
     alignItems: "center",
     justifyContent: "center",
+  },
+  menubar: {
+    background: "red",
   },
   inputRoot: {
     color: "inherit",
@@ -98,6 +104,30 @@ export default function HeaderMobile() {
   const handleDrawer = () => {
     setOpen(true);
   };
+  const handleLink = () => {
+    setOpen(false);
+  };
+
+  const dangNhap = localStorage.getItem("userLogin");
+
+  function handleLogout() {
+    if (JSON.parse(dangNhap) !== null) {
+      Swal.fire({
+        title: "Bạn muốn đăng xuất ?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "OK !",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem("userLogin");
+          window.location.replace("/");
+          Swal.fire("Đã đăng xuất tài khoản");
+        }
+      });
+    }
+  }
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
@@ -110,8 +140,11 @@ export default function HeaderMobile() {
           >
             <MenuIcon />
           </IconButton>
+          <Link to="/courses">Khóa Học</Link>
           <Typography className={classes.title} variant="h6" noWrap>
-            <img className={classes.logo1} src={logo} alt="logo" />
+            <Link to="/">
+              <img className={classes.logo1} src={logo} alt="logo" />
+            </Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -156,30 +189,55 @@ export default function HeaderMobile() {
           )}
         </Toolbar>
       </AppBar>
-      <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+      <Drawer
+        anchor="left"
+        className={classes.menubar}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
         <header className="headerMobile">
           <div className="headerMobile__img">
-            <Link href="#" to="/">
+            <Link to="/">
               <img alt="logo" src={logo} />
             </Link>
           </div>
-          <div className="headerMobile__cart">
+          <div className="headerMobile__cart" style={{ marginBottom: "5px" }}>
             <Link href="#" to="/">
-              <i className="fa cart fa-shopping-cart" />
+              <i
+                style={{ marginRight: "12px", fontSize: "30px" }}
+                className="fa cart fa-shopping-cart"
+              />
             </Link>
-            <NavLink to="/signup">
+            <NavLink to="/cart">
               <span>Giỏ Hàng</span>
             </NavLink>
           </div>
-          <div className="headerMobile__signup">
+          <div className="headerMobile__signup" style={{ marginBottom: "5px" }}>
             <NavLink to="/login">
-              <i className="fa fa-user-circle" style={{ marginRight: "2px" }} />
+              <i
+                className="fa fa-user-circle"
+                style={{ marginRight: "12px", fontSize: "30px" }}
+              />
               <span>Đăng nhập</span>
             </NavLink>
           </div>
-          <div className="headerMobile__login">
+          <div className="headerMobile__login" style={{ marginBottom: "5px" }}>
             <NavLink to="/signup">
+              <i
+                style={{ marginRight: "12px", fontSize: "30px" }}
+                class="fa fa-address-card"
+              ></i>
               <span>Đăng ký</span>
+            </NavLink>
+          </div>
+          <div className="headerMobile__logout" style={{ marginBottom: "5px" }}>
+            <NavLink to="/" onClick={handleLogout}>
+              <i
+                onClick={handleLink}
+                style={{ marginRight: "12px", fontSize: "30px" }}
+                className="fa fa-power-off"
+              ></i>
+              <span onClick={handleLink}>Đăng xuất</span>
             </NavLink>
           </div>
         </header>

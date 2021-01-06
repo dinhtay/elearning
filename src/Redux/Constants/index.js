@@ -11,3 +11,5 @@ export const STAR_LOADING = "STAR_LOADING";
 export const STOP_LOADING = "STOP_LOADING";
 
 export const THEM_GIO_HANG = "THEM_GIO_HANG";
+export const ADD_CART = "ADD_CART";
+export const SIGN_IN_COURSE = "SIGN_IN_COURSE";

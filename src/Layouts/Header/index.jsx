@@ -38,9 +38,9 @@ export default function Header() {
   return (
     <header className="header">
       <div className="img">
-        <a href="#">
+        <Link to="/">
           <img className="header__logo" src={logo} />
-        </a>
+        </Link>
       </div>
       <div>
         <Link className="header__course" to="/courses">
@@ -50,7 +50,7 @@ export default function Header() {
       <div className="header__search">
         <SearchHeader />
       </div>
-      {/*  <i className="fa cart fa-shopping-cart" /> */}
+
       <Cart />
 
       {user ? (

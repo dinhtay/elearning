@@ -1,6 +1,11 @@
 .headerMobile {
+  span {
+    color: black;
+  }
+  margin: 5px 52px;
   &__img {
     img {
+      margin-bottom: 20px;
       width: 130px;
     }
   }

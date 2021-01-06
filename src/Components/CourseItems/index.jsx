@@ -28,12 +28,12 @@ export default function CourseItems(props) {
               <Link
                 className="btn btn-outline-warning"
                 style={{ width: "100%", marginTop: "5px" }}
-                onClick={() =>
+                onClick={() => {
                   dispatch({
                     type: THEM_GIO_HANG,
                     payload: item,
-                  })
-                }
+                  });
+                }}
               >
                 Thêm Giỏ Hàng
                 <i className="text-danger fa fa-heart" />
